@@ -12,7 +12,7 @@ public class CatalogTests extends _Manager {
         for (String category : _Data.categories()) {
             goTo(category);
             String[] count = getText(By.cssSelector("div.category-product-count")).split(" ");
-            assertThat(parseInt(count[1]), equalTo(finds(By.cssSelector("li.item.product.product-item")).size()));
+            assertThat(parseInt(count[1]), equalTo(_Data.productCount()));
         }
     }
 }

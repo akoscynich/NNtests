@@ -37,8 +37,5 @@ public class _Data extends _Manager {
     public static int productCount(){
         return I.finds(By.cssSelector("li.item.product.product-item")).size();
     }
-    /*public static List<WebElement> listOfProducts() {
-        return new ArrayList<>(I.finds(By.cssSelector("div.actions-primary")));
 
-    }*/
 }
