@@ -1,42 +1,52 @@
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static java.lang.Integer.parseInt;
-import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CartTests extends _Manager {
 
     @Test
+    //Добавляет случайный товар из категории в корзину и проверяет правильность подсчета суммы. Повторяет для каждой категории.
     public void priceTest() throws InterruptedException {
         for (String category : _Data.categories()) {
             goTo(category);
             int r = (int) (Math.random() * _Data.productCount() + 1);
             click(By.xpath("//li[" + r + "]/div/div/div[2]/div"));
-            int z = parseInt(getText(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]")));
+            int count = parseInt(getText(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]")));
             click(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]"));
             Thread.sleep(3000);
-            click(By.cssSelector("a.action.showcart"));
-            List<String> summ = new ArrayList<>(asList(getText(By.xpath("//div[2]/div/div[2]/span")).split(" ")));
-            summ.remove(summ.size() - 1);
-            int x = parseInt(summ.stream().map(String::toString).collect(Collectors.joining("")));
-            List<String> price = new ArrayList<>(asList(getText(By.xpath("//div[3]/span[2]/span")).split(" ")));
-            price.remove(price.size() - 1);
-            int y = parseInt(price.stream().map(String::toString).collect(Collectors.joining("")));
-            assertThat(x, equalTo(y * z));
-            click(By.xpath("//div[2]/div[1]/div[2]/a"));
+            _Data.openMiniCart();
+            int summ = _Data.i(_Data.summInMiniCart);
+            int price = _Data.i(_Data.priceInMiniCart);
+            assertThat(summ, equalTo(price * count));
+            _Data.clearMiniCart();
             Thread.sleep(3000);
-
-            //goTo("https://nsp.mygento.net/ru/checkout/cart/");
-
-            //System.out.println(price[0]);
-            //System.out.println(price[1]);
         }
-
     }
+
+    @Test //Добавляет по одному случайному товару из каждой категории в корзину и проверяет правильность подсчета суммы.
+    public void priceTest3RandomProducts() throws InterruptedException {
+        for (String category : _Data.categories()) {
+            goTo(category);
+            int r = (int) (Math.random() * _Data.productCount() + 1);
+            click(By.xpath("//li[" + r + "]/div/div/div[2]/div"));
+            //int count = parseInt(getText(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]")));
+            click(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]"));
+            Thread.sleep(4000);
+        }
+        _Data.openMiniCart();
+        Thread.sleep(1000);
+        int total = 0;
+        for (String summ : _Data.summsFromMiniCart()) {
+            total += parseInt(summ);
+        }
+        int totalInMiniCart = _Data.i(_Data.totalInMiniCart);
+        assertThat(total, equalTo(totalInMiniCart));
+        _Data.clearMiniCart();
+        Thread.sleep(3000);
+    }
+
 }
+
