@@ -13,7 +13,7 @@ import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
-public class LinksTests extends _Manager {
+public class ScreenshotsTests extends _Manager {
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
