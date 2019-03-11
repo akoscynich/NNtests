@@ -2,7 +2,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
@@ -41,6 +43,15 @@ public class _Data extends _Manager {
     public static By passRegField = By.name("password");
     public static By passConfRegField = By.name("password_confirmation");
 
+    //Список размеров окна
+
+    public static List<String> breakPoints() {
+        List<String> breakPoints = new ArrayList<>();
+        breakPoints.add(0, "1920");
+        breakPoints.add(1, "768");
+        breakPoints.add(2, "320");
+        return breakPoints;
+    }
     //Список категорий
 
     public static List<String> categories() {
@@ -51,11 +62,36 @@ public class _Data extends _Manager {
         return categories;
     }
 
+    //Список основных страниц
+
+    public static List<String> mainPages() {
+        List<String> categories = new ArrayList<>();
+        categories.add(0, "https://nsp.mygento.net/ru/coffee-capsules");
+        categories.add(1, "https://nsp.mygento.net/ru/coffee-machines-1");
+        categories.add(2, "https://nsp.mygento.net/ru/accessories");
+        categories.add(3, "https://nsp.mygento.net/ru/");
+        return categories;
+    }
+
     //Собирает список ссылок с текущей страницы
 
     public static List<String> listOfLinks() {
         List<WebElement> allTheLinkList = finds(By.tagName("a"));
         List<String> links = new ArrayList<>();
+        for (WebElement link : allTheLinkList) {
+            if (link.getAttribute("href") != null) {
+                if (!(link.getAttribute("href").equals(""))) ;
+                links.add(link.getAttribute("href"));
+            }
+        }
+        return links;
+    }
+
+    //Собирает множетство ссылок с текущей страницы
+
+    public static Set<String> setOfLinks() {
+        Set<WebElement> allTheLinkList = new HashSet<>(finds(By.tagName("a")));
+        Set<String> links = new HashSet<>();
         for (WebElement link : allTheLinkList) {
             if (link.getAttribute("href") != null) {
                 if (!(link.getAttribute("href").equals(""))) ;
