@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class _Manager {
 
-    private String browser = BrowserType.FIREFOX; //<--Выбор браузера FIREFOX CHROME IE SAFARI(sudo only)
+    private String browser = BrowserType.CHROME; //<--Выбор браузера FIREFOX CHROME IE SAFARI(sudo only)
     public static WebDriver wd;
     //protected static final _Manager I = new _Manager();
     //ProxyServer bmp = new ProxyServer(8071);
