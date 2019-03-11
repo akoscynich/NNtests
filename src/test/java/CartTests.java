@@ -14,8 +14,9 @@ public class CartTests extends _Manager {
             goTo(category);
             int r = (int) (Math.random() * _Data.productCount() + 1);
             click(By.xpath("//li[" + r + "]/div/div/div[2]/div"));
+            Thread.sleep(1000);
             int count = parseInt(getText(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]")));
-            click(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]"));
+            click(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]"));//li[2]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]
             Thread.sleep(3000);
             _Data.openMiniCart();
             int summ = _Data.i(_Data.summInMiniCart);
@@ -33,6 +34,7 @@ public class CartTests extends _Manager {
             int r = (int) (Math.random() * _Data.productCount() + 1);
             click(By.xpath("//li[" + r + "]/div/div/div[2]/div"));
             //int count = parseInt(getText(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]")));
+            Thread.sleep(3000);
             click(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]"));
             Thread.sleep(4000);
         }

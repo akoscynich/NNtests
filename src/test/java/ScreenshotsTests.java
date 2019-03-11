@@ -29,7 +29,7 @@ public class ScreenshotsTests extends _Manager {
         new File("/Users/hamster/IdeaProjects/NNtests/out/screenshots/" + date).mkdir();
     }
 
-    @Test
+    @Test(alwaysRun = false)
     //Собирает ссылки с главной страницы и страниц категорий, переходит по ним, если они 404 то собирает ссылки в список и выводит на консоль,
     //делает скриншоты на каждое заданное разрешение. ~20 минут.
     public void screenshotsOfLinksFromHomePageAndCategories() throws IOException, InterruptedException {
