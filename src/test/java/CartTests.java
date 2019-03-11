@@ -19,6 +19,7 @@ public class CartTests extends _Manager {
             click(By.xpath("//li[" + r + "]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]"));//li[2]/div/div/div[2]/div/div[1]/form/div/div[3]/div[5]
             Thread.sleep(3000);
             _Data.openMiniCart();
+            Thread.sleep(1000);
             int summ = _Data.i(_Data.summInMiniCart);
             int price = _Data.i(_Data.priceInMiniCart);
             assertThat(summ, equalTo(price * count));
@@ -44,6 +45,7 @@ public class CartTests extends _Manager {
         for (String summ : _Data.summsFromMiniCart()) {
             total += parseInt(summ);
         }
+        Thread.sleep(1000);
         int totalInMiniCart = _Data.i(_Data.totalInMiniCart);
         assertThat(total, equalTo(totalInMiniCart));
         _Data.clearMiniCart();
