@@ -41,7 +41,7 @@ public class _Manager {
 
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.get("https://nsp.mygento.net"); //<---------------Стартовая страница
-        wd.manage().window().maximize();
+        //wd.manage().window().maximize();
 
     }
 
