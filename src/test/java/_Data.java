@@ -14,9 +14,9 @@ public class _Data extends _Manager {
 
     //Ссылки
 
-    public static String homePage = "https://nsp.mygento.net/ru/";
-    public static String cart = "https://nsp.mygento.net/ru/checkout/cart/";
-    public static String reg = "https://nsp.mygento.net/ru/customer/account/create/";
+    public static String homePage = baseUrl + "/ru/";
+    public static String cart = baseUrl + "/ru/checkout/cart/";
+    public static String reg = baseUrl + "/ru/customer/account/create/";
 
     //Кнопки
 
@@ -56,9 +56,9 @@ public class _Data extends _Manager {
 
     public static List<String> categories() {
         List<String> categories = new ArrayList<>();
-        categories.add(0, "https://nsp.mygento.net/ru/coffee-capsules");
-        categories.add(1, "https://nsp.mygento.net/ru/coffee-machines-1");
-        categories.add(2, "https://nsp.mygento.net/ru/accessories");
+        categories.add(0, baseUrl + "/ru/coffee-capsules");
+        categories.add(1, baseUrl + "/ru/coffee-machines-1");
+        categories.add(2, baseUrl + "/ru/accessories");
         return categories;
     }
 
@@ -66,10 +66,10 @@ public class _Data extends _Manager {
 
     public static List<String> mainPages() {
         List<String> categories = new ArrayList<>();
-        categories.add(0, "https://nsp.mygento.net/ru/coffee-capsules");
-        categories.add(1, "https://nsp.mygento.net/ru/coffee-machines-1");
-        categories.add(2, "https://nsp.mygento.net/ru/accessories");
-        categories.add(3, "https://nsp.mygento.net/ru/");
+        categories.add(0, baseUrl + "/ru/coffee-capsules");
+        categories.add(1, baseUrl + "/ru/coffee-machines-1");
+        categories.add(2, baseUrl + "/ru/accessories");
+        categories.add(3, baseUrl + "/ru/");
         return categories;
     }
 
@@ -128,6 +128,5 @@ public class _Data extends _Manager {
         i.remove(i.size() - 1);
         return parseInt(i.stream().map(String::toString).collect(Collectors.joining("")));
     }
-
 
 }

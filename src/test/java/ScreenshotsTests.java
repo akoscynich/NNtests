@@ -10,26 +10,26 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
 
 public class ScreenshotsTests extends _Manager {
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-
     public String date = dateFormat.format(new Date());
 
-    public void takeScreenshot() throws IOException {
+    /*public void takeScreenshot() throws IOException {
         File screenshot = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshot, new File("/Users/hamster/IdeaProjects/NNtests/out/screenshots/" + date + "/" + dateFormat.format(new Date()) + ".png"), true);
-    }
+    }*/
 
     @BeforeClass
     public void preconditions() {
         new File("/Users/hamster/IdeaProjects/NNtests/out/screenshots/" + date).mkdir();
     }
 
-    @Test(enabled = false)
+    @Test//(enabled = false)
     //Собирает ссылки с главной страницы и страниц категорий, переходит по ним, если они 404 то собирает ссылки в список и выводит на консоль,
     //делает скриншоты на каждое заданное разрешение. ~20 минут.
     public void screenshotsOfLinksFromHomePageAndCategories() throws IOException, InterruptedException {
@@ -47,7 +47,9 @@ public class ScreenshotsTests extends _Manager {
             for (String breakPoint : _Data.breakPoints()) {
                 wd.manage().window().setSize(new Dimension(parseInt(breakPoint), 1080));
                 Thread.sleep(800);
-                takeScreenshot();
+                File screenshot = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(screenshot, new File("/Users/hamster/IdeaProjects/NNtests/out/screenshots/"
+                        + date + "/" + link.replaceAll("/", "|") + " " + breakPoint + ".png"), true);
             }
         }
         System.out.println(links404);

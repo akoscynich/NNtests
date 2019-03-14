@@ -1,4 +1,3 @@
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,26 +7,19 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class _Manager {
 
+    static String baseUrl = "https://nsp.mygento.net"; //<---------------------------------Стартовая страница
+
     private String browser = BrowserType.CHROME; //<--Выбор браузера FIREFOX CHROME IE SAFARI(sudo only)
     public static WebDriver wd;
-    //protected static final _Manager I = new _Manager();
-    //ProxyServer bmp = new ProxyServer(8071);
 
     //Fixture--------------------------------------------------------------------------------
 
-    public void init() throws Exception {
-
-        //bmp.start();
-        //bmp.autoBasicAuthorization("", "nsp", "mygento");
-
-        //DesiredCapabilities caps = new DesiredCapabilities();
-        //caps.setCapability(CapabilityType.PROXY, bmp.seleniumProxy());
+    public void init() {
 
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
@@ -40,14 +32,11 @@ public class _Manager {
         }
 
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        wd.get("https://nsp.mygento.net"); //<---------------Стартовая страница
-        //wd.manage().window().maximize();
-
+        wd.get(baseUrl);
     }
 
-    public void stop() throws Exception {
+    public void stop() {
         wd.quit();
-        //bmp.stop();
     }
 
     //Methods--------------------------------------------------------------------------------
@@ -80,16 +69,15 @@ public class _Manager {
         return wd.findElements(locator);
     }
 
-
     //---------------------------------------------------------------------------------------
 
     @BeforeSuite(alwaysRun = true)
-    public void setUp() throws Exception {
+    public void setUp() {
         init();
     }
 
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void tearDown() {
         stop();
     }
 

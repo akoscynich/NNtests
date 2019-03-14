@@ -7,14 +7,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class RegistrationTests extends _Manager {
 
-    @Test(enabled = false) //<---ToDo
+    long now = System.currentTimeMillis();
+
+    @Test(enabled = true)
      public void positiveRegistrationTest() throws InterruptedException {
         goTo(_Data.reg);
-        type(_Data.firstnameRegField, "sadasd");
-        type(_Data.lastnameRegField, "sadasd");
-        type(_Data.eMailRegField, "sadasd");
-        type(_Data.passRegField, "sadasd");
-        type(_Data.passConfRegField, "sadasd");
+        type(_Data.firstnameRegField, "Test_name" + now);
+        type(_Data.lastnameRegField, "Test_lastname" + now);
+        type(_Data.eMailRegField, "Some_email" + now + "@somewhere.ru");
+        type(_Data.passRegField, "_Aa" + now);
+        type(_Data.passConfRegField, "_Aa" + now);
         click(_Data.submitReg);
     }
 
