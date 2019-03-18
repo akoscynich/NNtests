@@ -20,7 +20,7 @@ public class RegistrationTests extends _Manager {
         click(_Data.submitReg);
     }
 
-    @Test(enabled = false) //<---с пустыми полями
+    @Test(enabled = false) //<---с пустыми полями ToDo
     public void negativeRegistrationTest() throws InterruptedException {
         goTo(_Data.reg);
         Thread.sleep(500);
@@ -32,7 +32,7 @@ public class RegistrationTests extends _Manager {
         assertThat(getText(By.cssSelector("#password-confirmation-error")), equalTo("Это поле обязательно для заполнения."));
     }
 
-    @Test(enabled = false) //<---с невалидными данными
+    @Test(enabled = false) //<---с невалидными данными ToDo
     public void negativeRegistrationTest1() throws InterruptedException {
         goTo(_Data.reg);
         type(_Data.firstnameRegField, "sadasd");

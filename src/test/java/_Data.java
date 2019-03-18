@@ -79,8 +79,7 @@ public class _Data extends _Manager {
         List<WebElement> allTheLinkList = finds(By.tagName("a"));
         List<String> links = new ArrayList<>();
         for (WebElement link : allTheLinkList) {
-            if (link.getAttribute("href") != null) {
-                if (!(link.getAttribute("href").equals(""))) ;
+            if (link.getAttribute("href") != null && !(link.getAttribute("href").equals(""))) {
                 links.add(link.getAttribute("href"));
             }
         }
@@ -93,8 +92,7 @@ public class _Data extends _Manager {
         Set<WebElement> allTheLinkList = new HashSet<>(finds(By.tagName("a")));
         Set<String> links = new HashSet<>();
         for (WebElement link : allTheLinkList) {
-            if (link.getAttribute("href") != null) {
-                if (!(link.getAttribute("href").equals(""))) ;
+            if (link.getAttribute("href") != null && !(link.getAttribute("href").equals(""))) {
                 links.add(link.getAttribute("href"));
             }
         }
@@ -117,7 +115,7 @@ public class _Data extends _Manager {
     //Количество продуктов на странице в категории
 
     public static int productCount() {
-        return finds(By.cssSelector("li.item.product.product-item")).size();
+        return finds(By.cssSelector("div.product.name.product-item-name")).size();
     }
 
     //Находит элемент по локатору, берет его текст, режет на части по пробелам удаляет последний элемент,
