@@ -1,14 +1,11 @@
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.NoInjection;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class SwaggerTests extends _Manager {
+public class SwaggerTests {
 
     @Test
     public void swaggerResponse() throws IOException {

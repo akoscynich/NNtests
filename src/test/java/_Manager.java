@@ -20,7 +20,6 @@ public class _Manager {
 
     //Fixture--------------------------------------------------------------------------------
 
-
     public void init() {
 
         if (browser.equals(BrowserType.FIREFOX)) {
