@@ -17,6 +17,7 @@ public class _Data extends _Manager {
     public static String homePage = baseUrl + "/ru/";
     public static String cart = baseUrl + "/ru/checkout/cart/";
     public static String reg = baseUrl + "/ru/customer/account/create/";
+    public static String myAccount = baseUrl + "/ru/customer/account/";
 
     //Кнопки
 

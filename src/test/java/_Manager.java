@@ -66,6 +66,10 @@ public class _Manager {
         return wd.findElement(locator).getText();
     }
 
+    protected static String getUrl() {
+        return wd.getCurrentUrl();
+    }
+
     public static List<WebElement> finds(By locator) {
         return wd.findElements(locator);
     }
