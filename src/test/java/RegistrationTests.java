@@ -17,6 +17,7 @@ public class RegistrationTests extends _Manager {
         type(_Data.eMailRegField, "Test_email" + now + "@somewhere.ru");
         type(_Data.passRegField, "_Aa" + now);
         type(_Data.passConfRegField, "_Aa" + now);
+        type(_Data.telephone, "0000000000");
         click(_Data.submitReg);
         assertThat(getUrl(), equalTo(_Data.myAccount));
     }

@@ -25,7 +25,7 @@ public class _Manager {
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
-            wd = new ChromeDriver(new ChromeOptions().setHeadless(true));
+            wd = new ChromeDriver(new ChromeOptions().setHeadless(false));
         } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         } else if (browser.equals(BrowserType.SAFARI)) {

@@ -40,6 +40,7 @@ public class _Data extends _Manager {
     public static By firstnameRegField = By.name("firstname");
     public static By lastnameRegField = By.name("lastname");
     public static By machineCodeRegField = By.name("machine_code_reg");
+    public static By telephone = By.cssSelector("input.input-text.required-entry.validate-nsp-telephone");
     public static By eMailRegField = By.name("email");
     public static By passRegField = By.name("password");
     public static By passConfRegField = By.name("password_confirmation");
