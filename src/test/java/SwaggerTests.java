@@ -11,8 +11,8 @@ public class SwaggerTests {
     public void swaggerResponse() throws IOException {
         URL url = new URL("https://nsp.mygento.net/ru/rest/all/schema?services=all");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-        Assert.assertEquals(connection.getResponseCode(), 200);
         System.out.println(connection.getResponseCode());
+        Assert.assertEquals(connection.getResponseCode(), 200);
         String contentType = null;
         if ((connection.getContentType()).equals("application/json"))
             contentType = "application/json";
